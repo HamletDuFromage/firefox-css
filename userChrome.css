@@ -1,3 +1,7 @@
+/* Use old photon icons */
+
+@import "photonIcons.css";
+
 * {
   --tab-corner-rounding: 5px;
   --button-corner-rounding: 4px;
@@ -340,5 +344,12 @@
   :root[uidensity=compact] #PersonalToolbar toolbarbutton {
     margin-top: 0px;
     /* Original: 2px */
+  }
+}
+
+/* Use old icons */
+@-moz-document url(chrome://browser/content/browser.xhtml) {
+  #tracking-protection-icon {
+    list-style-image: url("photon-icons/icons/desktop/tracking-protection-16.svg") !important;
   }
 }
