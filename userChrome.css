@@ -1,5 +1,4 @@
 * {
-  /* -------------------- ð¨ Customization ð¨ -------------------- */
   --tab-corner-rounding: 5px;
   --button-corner-rounding: 4px;
   --menu-corner-rounding: 5px;
@@ -28,50 +27,35 @@
 
 /* hide address bar icons unless focus */
 
-.urlbar-icon, #userContext-indicator, #userContext-label {
-  fill: transparent !important;
-  background-color: transparent !important;
-  color: transparent !important;
-  transition: var(--animation-speed) !important;
+@-moz-document url(chrome://browser/content/browser.xhtml) {
+  .urlbar-icon, #userContext-indicator, #userContext-label {
+    fill: transparent !important;
+    background-color: transparent !important;
+    color: transparent !important;
+    transition: var(--animation-speed) !important;
+  }
+  #urlbar:hover .urlbar-icon, #urlbar:active .urlbar-icon, #urlbar[focused] .urlbar-icon {
+    fill: var(--toolbar-color) !important;
+  }
+  #urlbar:hover #userContext-indicator, #urlbar:active #userContext-indicator, #urlbar[focused] #userContext-indicator, #urlbar:hover #userContext-label, #urlbar:active #userContext-label, #urlbar[focused] #userContext-label {
+    color: var(--identity-tab-color) !important;
+    fill: var(--identity-tab-color) !important;
+  }
 }
 
-#urlbar:hover .urlbar-icon, #urlbar:active .urlbar-icon, #urlbar[focused] .urlbar-icon {
-  fill: var(--toolbar-color) !important;
-}
+/* Remove titlebar spacers */
 
-#urlbar:hover #userContext-indicator, #urlbar:active #userContext-indicator, #urlbar[focused] #userContext-indicator, #urlbar:hover #userContext-label, #urlbar:active #userContext-label, #urlbar[focused] #userContext-label {
-  color: var(--identity-tab-color) !important;
-  fill: var(--identity-tab-color) !important;
-}
-
-.urlbar-page-action[open] {
-  background-color: var(--toolbarbutton-active-background) !important;
-  fill: var(--toolbar-color) !important;
-}
-
-.urlbar-page-action[open]:hover {
-  background-color: var(--toolbarbutton-active-background) !important;
-  fill: var(--toolbar-color) !important;
-}
-
-.urlbar-page-action[open] .urlbar-icon {
-  fill: var(--toolbar-color) !important;
-}
-
-/*buttons to the left
-  #TabsToolbar, #toolbar-menubar, .titlebar-buttonbox{ -moz-box-direction: reverse }*/
-
-.titlebar-spacer[type="post-tabs"] {
-  display: none
-}
-
-.titlebar-spacer[type="pre-tabs"] {
-  border-inline-end: 0px solid white !important;
-  width: 7px !important;
-}
-
-.browserContainer {
-  position: relative;
+@-moz-document url(chrome://browser/content/browser.xhtml) {
+  .titlebar-spacer[type="post-tabs"] {
+    display: none
+  }
+  .titlebar-spacer[type="pre-tabs"] {
+    border-inline-end: 0px solid white !important;
+    width: 7px !important;
+  }
+  .browserContainer {
+    position: relative;
+  }
 }
 
 /* Remove borders everywhere, some code copied from edge style for firefox */
@@ -107,122 +91,104 @@
   }
 }
 
-/* #urlbar-background {box-shadow: inset 0 0 1px 1px #E5E5E5 !important;}*/
+/* Remove urlbar and searchbar background shadows, borders */
 
-#urlbar-background {
-  box-shadow: none !important;
+@-moz-document url(chrome://browser/content/browser.xhtml) {
+  #urlbar-background, #urlbar, #searchbar {
+    box-shadow: none !important;
+    border: none !important;
+  }
 }
 
-/* #searchbar {box-shadow: inset 0 0 1px 1px #E5E5E5 !important;} */
+/* Remove tab borders, spacings, adjust height */
 
-#searchbar {
-  box-shadow: none !important;
+@-moz-document url(chrome://browser/content/browser.xhtml) {
+  :root {
+    --tabs-border: transparent !important;
+    --tab-min-height: 27px !important;
+  }
+  #TabsToolbar {
+    height: 27px !important;
+  }
+  .tabbrowser-tab {
+    padding-inline: 0px !important;
+  }
 }
 
-/*  */
+/* Slim down navbar */
 
-#urlbar #urlbar-background, #searchbar {
-  border: none !important;
+@-moz-document url(chrome://browser/content/browser.xhtml) {
+  #nav-bar {
+    border: none !important;
+    margin-top: 0px !important;
+    border-top: 0px !important;
+    box-shadow: none !important;
+    height: 33px !important;
+  }
 }
 
-:root {
-  --tabs-border: transparent !important;
-  --tab-min-height: 27px !important;
-}
+/* Change tab color (light selected tabs, dark unselected */
 
-#TabsToolbar {
-  height: 27px !important;
-}
-
-.tabbrowser-tab::after, .tabbrowser-tab::before {
-  color: rgb(27, 27, 27) !important;
-  border-left: none !important;
-}
-
-#searchbar {
-  border: none !important;
-  box-shadow: none !important;
-}
-
-#urlbar {
-  border: none !important;
-  box-shadow: none !important;
-}
-
-#nav-bar {
-  border: none !important;
-  margin-top: 0px !important;
-  border-top: 0px !important;
-  box-shadow: none !important;
-  height: 32px !important;
-}
-
-/*
- *
- * TABS
- *
-*/
-
-.tab-text {
-  color: rgb(206, 206, 206) !important;
-}
-
-.tab-content[selected] label {
-  color: rgb(27, 27, 27) !important;
+@-moz-document url(chrome://browser/content/browser.xhtml) {
+  .tab-text {
+    color: rgb(206, 206, 206) !important;
+  }
+  .tab-content[selected] label {
+    color: rgb(27, 27, 27) !important;
+  }
 }
 
 /* Wide tabs */
 
-/* .tabbrowser-tab[fadein="true"]:not([pinned]) {
+/* @-moz-document url(chrome://browser/content/browser.xhtml) {
+  .tabbrowser-tab[fadein="true"]:not([pinned]) {
     max-width: 1900px !important;
+  }
 } */
 
-/* Italic and dimmed unloaded tabs */
+/* Italic and dimmed unloaded tabs, inverted icons (for those that are hard to see) */
 
-.tabbrowser-tab[pending] {
-  font-style: italic;
-}
-
-toolbarspring {
-  min-width: 8px;
-  max-width: 8px;
+@-moz-document url(chrome://browser/content/browser.xhtml) {
+  .tabbrowser-tab[pending] {
+    font-style: italic;
+  }
+  /* Github icon */
+  .tabbrowser-tab:not([selected]) .tab-icon-image[src^="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzIiIGhlaWdodD0iMzIiIHZpZXdCb3g9IjAgMCAzMiAzMiIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZmlsbC1ydWxlPSJldmVub2RkIiBjbGlwLXJ"] {
+    filter: invert(1.0) !important;
+  }
 }
 
 /* Only show close buttons on background tabs when hovering with the mouse */
 
-.tabbrowser-tab:not([selected]):not([pinned]) .tab-close-button {
-  display: none !important;
+@-moz-document url(chrome://browser/content/browser.xhtml) {
+  .tabbrowser-tab:not([selected]):not([pinned]) .tab-close-button {
+    display: none !important;
+  }
+  .tabbrowser-tab:not([selected]):not([pinned]):hover .tab-close-button {
+    display: -moz-box !important;
+  }
 }
 
-.tabbrowser-tab:not([selected]):not([pinned]):hover .tab-close-button {
-  display: -moz-box !important;
-}
+/* Container color gradient as tab background for unselected tabs, little line under the favicon */
 
-/* invert github icon when it background tab */
-
-.tabbrowser-tab:not([selected]) .tab-icon-image[src^="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzIiIGhlaWdodD0iMzIiIHZpZXdCb3g9IjAgMCAzMiAzMiIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZmlsbC1ydWxlPSJldmVub2RkIiBjbGlwLXJ"] {
-  filter: invert(1.0) !important;
-}
-
-/* Container color as tab background */
-
-.tabbrowser-tab:not([selected])[usercontextid] .tab-background {
-  background-image: linear-gradient(rgba(0, 0, 0, 0), var(--identity-tab-color)) !important;
-  /* background: var(--identity-tab-color) !important; */
-  opacity: 0.4 !important;
+@-moz-document url(chrome://browser/content/browser.xhtml) {
+  .tabbrowser-tab:not([selected])[usercontextid] .tab-background {
+    background-image: linear-gradient(rgba(0, 0, 0, 0), var(--identity-tab-color)) !important;
+    /* background: var(--identity-tab-color) !important; */
+    opacity: 0.4 !important;
+  }
+  .tab-icon-image {
+    box-sizing: content-box;
+    padding: 3px 0;
+    border-bottom: 2px solid var(--identity-icon-color);
+  }
 }
 
 /* FOR PROTON UI */
 
-/* editing the tabs to return quantum feel */
+/* Connect tab to window */
 
-@media (-moz-proton) {
-  /* Tab - Max Size */
-  /* .tabbrowser-tab[fadein]:not([pinned]):not([style*="max-width"])
-  {
-    max-width: 240px !important;
-  } */
-  /* Tab - Connect to window */
+@-moz-document url(chrome://browser/content/browser.xhtml) {
   .tab-background {
     border-radius: 0px 0px 0px 0px !important;
     margin-top: 0px !important;
@@ -236,7 +202,11 @@ toolbarspring {
     margin-top: 0px !important;
     margin-bottom: 0px !important;
   }
-  /* adds the little colored strip on top of the selected tab */
+}
+
+/* Add the little colored strip on top of the selected tab */
+
+@-moz-document url(chrome://browser/content/browser.xhtml) {
   .tabbrowser-tab[selected] .tab-context-line {
     margin-top: 0px !important;
     margin-right: 0px !important;
@@ -245,18 +215,11 @@ toolbarspring {
     background-color: #00bcd4 !important;
     border-bottom: 2px solid var(--identity-icon-color);
   }
-  /** Container Tab - Color line at icon's bottom *****************************/
-  /*   .tab-icon-image {
-    box-sizing: content-box;
-    padding: 3px 0;
+}
 
-    border-bottom: 2px solid var(--identity-icon-color);
-  } */
-  /* neighbouring tabs should "pinch" together */
-  .tabbrowser-tab {
-    padding-inline: 0px !important;
-  }
-  /** PictureInPicture Tab - Show PIP Icon ************************************/
+/* Show picture-in-picture icon*/
+
+@-moz-document url(chrome://browser/content/browser.xhtml) {
   .tab-icon-sound[pictureinpicture]:not([pinned]) {
     /* Shape */
     display: -moz-inline-box !important;
@@ -273,7 +236,11 @@ toolbarspring {
   .tab-icon-sound[pictureinpicture]:not([pinned])[selected] {
     opacity: 0.95;
   }
-  /** Pinned Tab - Replace Favicon to Close Button at Selected ****************/
+}
+
+/* Replace favicon by close button pinned tabs */
+
+@-moz-document url(chrome://browser/content/browser.xhtml) {
   .tabbrowser-tab[pinned][visuallyselected]:not([busy]) .tab-close-button {
     display: -moz-box !important;
     -moz-box-ordinal-group: 0 !important;
@@ -286,7 +253,11 @@ toolbarspring {
   .tabbrowser-tab[pinned][visuallyselected] .tab-icon-image {
     display: none !important;
   }
-  /** Sound Tab - Show with Favicons ******************************************/
+}
+
+/* Favicon tweaks for sound tabs */
+
+@-moz-document url(chrome://browser/content/browser.xhtml) {
   /* Makes the favicons always visible (also on hover) */
   .tab-icon-image:not([pinned]) {
     opacity: 1 !important;
@@ -344,46 +315,33 @@ toolbarspring {
   }
 }
 
-/* rounded corners for menus */
+/* Rounded corners for menus, reduce padding */
 
-@-moz-document url-prefix(chrome: //browser/content/){
-.panel-arrowcontent, #alltabs-popup .arrowscrollbox-scrollbox, menupopup:not(#BMB_bookmarksPopup), .textbox-contextmenu {
-  border-radius: 5px !important;
+@-moz-document url(chrome://browser/content/browser.xhtml) {
+  .panel-arrowcontent, #alltabs-popup .arrowscrollbox-scrollbox, menupopup:not(#BMB_bookmarksPopup), .textbox-contextmenu {
+    border-radius: 5px !important;
+  }
+  :root[uidensity=compact] menupopup>menuitem, menupopup>menu {
+    padding-block: 0.1em !important;
+    /* Original: 0.5em */
+  }
 }
 
-}
+/* Reduce padding in misc areas */
 
-/** URL Bar - Reduce Padding ************************************************/
-
-:root:not([uidensity=touch]) #urlbar-container, #search-container {
-  padding-block: 2px;
-  /* Original: 4px */
-  margin-inline: 5px;
-  /* Original: 5px */
-}
-
-/* spread menu */
-
-:root[uidensity=compact] .urlbarView-row:not([type=tip], [type=dynamic]) {
-  padding-block: 2px;
-  /* [Compact, General]: 2px, Touch: 11px */
-}
-
-:root[uidensity=compact] #urlbar .search-one-offs:not([hidden]) {
-  padding-block: 2px;
-  /* [Compact, General]: 4px, Touch 11px */
-}
-
-/** BookMark Bar - Reduce Height ********************************************/
-
-:root[uidensity=compact] #PersonalToolbar toolbarbutton {
-  margin-top: 0px;
-  /* Original: 2px */
-}
-
-/** Menu - Reduce Padding ***************************************************/
-
-:root[uidensity=compact] menupopup>menuitem, menupopup>menu {
-  padding-block: 0.1em !important;
-  /* Original: 0.5em */
+@-moz-document url(chrome://browser/content/browser.xhtml) {
+  /* spread menu */
+  :root[uidensity=compact] .urlbarView-row:not([type=tip], [type=dynamic]) {
+    padding-block: 2px;
+    /* [Compact, General]: 2px, Touch: 11px */
+  }
+  :root[uidensity=compact] #urlbar .search-one-offs:not([hidden]) {
+    padding-block: 2px;
+    /* [Compact, General]: 4px, Touch 11px */
+  }
+  /* Reduce padding of bookmark bar */
+  :root[uidensity=compact] #PersonalToolbar toolbarbutton {
+    margin-top: 0px;
+    /* Original: 2px */
+  }
 }
