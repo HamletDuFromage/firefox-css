@@ -8,6 +8,7 @@
   --menu-corner-rounding: 5px;
   --menu-item-height: 30px;
   --animation-speed: 0.15s;
+  --tab-accent-color: #00bcd4;
 }
 
 @namespace url("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul");
@@ -190,6 +191,7 @@
 /* Connect tab to window */
 
 @-moz-document url(chrome://browser/content/browser.xhtml) {
+  .toolbarbutton-1,
   .tab-background {
     border-radius: 0px 0px 0px 0px !important;
     margin-top: 0px !important;
@@ -213,7 +215,7 @@
     margin-right: 0px !important;
     margin-left: 0px !important;
     height: 2px !important;
-    background-color: #00bcd4 !important;
+    background-color: var(--tab-accent-color) !important;
     border-bottom: 2px solid var(--identity-icon-color);
   }
 }
@@ -351,5 +353,32 @@
 @-moz-document url(chrome://browser/content/browser.xhtml) {
   #tracking-protection-icon {
     list-style-image: url("photon-icons/icons/desktop/tracking-protection-16.svg") !important;
+  }
+}
+
+/* Make the firefox view button look like a tab */
+@-moz-document url(chrome://browser/content/browser.xhtml) {
+  #firefox-view-button > .toolbarbutton-icon{
+    border-radius: 0 !important;
+  }
+  #firefox-view-button[aria-selected=true] > .toolbarbutton-icon{
+    box-shadow: inset 0 2px var(--tab-accent-color) !important;
+    background-color: var(--toolbar-non-lwt-bgcolor) !important;
+  }
+}
+
+/* Remove separator between firefox view and tabs */
+@-moz-document url(chrome://browser/content/browser.xhtml) {
+  #tabbrowser-tabs {
+    border-inline-start: 0px !important;
+    padding-inline-start: 0px !important;
+    margin-inline-start: 0px !important;
+  }
+}
+
+/* remove label for private window indicator */
+@-moz-document url(chrome://browser/content/browser.xhtml) {
+  #private-browsing-indicator-with-label > label {
+    display: none;
   }
 }
