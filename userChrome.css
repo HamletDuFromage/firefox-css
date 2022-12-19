@@ -112,8 +112,8 @@
     --tabs-border: transparent !important;
     --tab-min-height: 27px !important;
   }
-  #TabsToolbar {
-    height: 27px !important;
+  .tabbrowser-tab, .tab-content, #TabsToolbar > .toolbar-items {
+    height: var(--tab-min-height) !important;
   }
   .tabbrowser-tab {
     padding-inline: 0px !important;
