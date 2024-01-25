@@ -1,6 +1,6 @@
 /* Use old photon icons */
 
-@import "photonIcons.css";
+/* @import "photonIcons.css"; */
 
 * {
   --tab-corner-rounding: 5px;
@@ -380,5 +380,12 @@
 @-moz-document url(chrome://browser/content/browser.xhtml) {
   #private-browsing-indicator-with-label > label {
     display: none;
+  }
+}
+
+/* Full opacity for the titlebars of inactive windows */
+@-moz-document url(chrome://browser/content/browser.xhtml) {
+  :root[tabsintitlebar] #titlebar:-moz-window-inactive{
+    opacity: 1 !important;
   }
 }
