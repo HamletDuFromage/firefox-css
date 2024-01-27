@@ -32,7 +32,7 @@
 
 /* hide address bar icons unless focus */
 
-@-moz-document url(chrome://browser/content/browser.xhtml) {
+/* @-moz-document url(chrome://browser/content/browser.xhtml) {
   .urlbar-icon, #userContext-indicator, #userContext-label {
     fill: transparent !important;
     background-color: transparent !important;
@@ -47,7 +47,7 @@
     fill: var(--identity-tab-color) !important;
   }
 }
-
+ */
 /* Remove titlebar spacers */
 
 @-moz-document url(chrome://browser/content/browser.xhtml) {
