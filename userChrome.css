@@ -423,8 +423,8 @@ menupopup>menu {
 
 /* remove label for private window indicator */
 @-moz-document url(chrome://browser/content/browser.xhtml){
-#private-browsing-indicator-with-label>label {
-  display: none;
+.private-browsing-indicator-label {
+  display: none !important;
 }
 }
 
