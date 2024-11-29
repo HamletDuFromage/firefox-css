@@ -209,6 +209,13 @@
 }
 }
 
+/* Slightly lower the tab close button */
+@-moz-document url(chrome://browser/content/browser.xhtml){
+.tab-close-button {
+  margin-top: 1px;
+}
+}
+
 /* Container color gradient as tab background for unselected tabs, little line under the favicon */
 
 @-moz-document url(chrome://browser/content/browser.xhtml){
