@@ -430,7 +430,7 @@ menupopup>menu {
 
 /* Full opacity for the titlebars of inactive windows */
 @-moz-document url(chrome://browser/content/browser.xhtml){
-:root[tabsintitlebar] #titlebar:-moz-window-inactive {
+:root[tabsintitlebar] .browser-titlebar:-moz-window-inactive {
   opacity: 1 !important;
 }
 }
