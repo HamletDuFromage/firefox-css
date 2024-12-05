@@ -9,7 +9,8 @@
   --menu-item-height: 30px;
   --animation-speed: 0.15s;
   --tab-accent-color: #00bcd4;
-  --tab-bar-offset: 8px;
+  --tab-block-margin: 0px !important;
+  --tab-min-height: 27px !important;
 }
 
 @namespace url("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul");
@@ -126,12 +127,11 @@
 @-moz-document url(chrome://browser/content/browser.xhtml){
 :root {
   --tabs-border: transparent !important;
-  --tab-min-height: 36px !important;
 }
 
-#TabsToolbar {
+#TabsToolbar,
+.tabbrowser-tab {
   height: var(--tab-min-height) !important;
-  margin-top: calc(var(--tab-bar-offset)*-1) !important;
 }
 
 .tabbrowser-tab {
@@ -143,7 +143,7 @@
 
 @-moz-document url(chrome://browser/content/browser.xhtml){
 .tabbrowser-tab[selected] .tab-context-line {
-  margin-top: var(--tab-bar-offset) !important;
+  margin-top: 0px !important;
   margin-right: 0px !important;
   margin-left: 0px !important;
   height: 2px !important;
@@ -158,7 +158,7 @@
 @-moz-document url(chrome://browser/content/browser.xhtml){
 #nav-bar {
   border: none !important;
-  margin-top: calc(var(--tab-bar-offset)*-1) !important;
+  margin-top: 0px !important;
   border-top: 0px !important;
   box-shadow: none !important;
 }
@@ -235,16 +235,9 @@
 
 @-moz-document url(chrome://browser/content/browser.xhtml){
 
-.toolbarbutton-1,
 .tab-background {
   border-radius: 0px 0px 0px 0px !important;
-  margin-top: 0px !important;
-  margin-bottom: 0px !important;
-}
-
-.tab-content {
-  margin-top: 0px !important;
-  margin-bottom: 0px !important;
+  margin: 0 !important;
 }
 
 .tab-stack {
@@ -382,28 +375,6 @@ menupopup:not(#BMB_bookmarksPopup),
 menupopup>menu {
   padding-block: 0.1em !important;
   /* Original: 0.5em */
-}
-}
-
-/* Reduce padding in misc areas */
-
-@-moz-document url(chrome://browser/content/browser.xhtml){
-
-/* spread menu */
-:root[uidensity=compact] .urlbarView-row:not([type=tip], [type=dynamic]) {
-  padding-block: 2px;
-  /* [Compact, General]: 2px, Touch: 11px */
-}
-
-:root[uidensity=compact] #urlbar .search-one-offs:not([hidden]) {
-  padding-block: 2px;
-  /* [Compact, General]: 4px, Touch 11px */
-}
-
-/* Reduce padding of bookmark bar */
-:root[uidensity=compact] #PersonalToolbar toolbarbutton {
-  margin-top: 0px;
-  /* Original: 2px */
 }
 }
 
